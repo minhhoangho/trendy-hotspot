@@ -10,7 +10,7 @@ from util import logger
 
 
 def generate_archive_md(searches, stars, lives, musics, brands):
-    """生成今日readme
+    """Generate readme for archive
     """
     def search(item):
         word = item['word']
@@ -47,23 +47,23 @@ def generate_archive_md(searches, stars, lives, musics, brands):
             return '1. [{}]({}) - {}'.format(title, play_url, author)
         return '1. {} - {}'.format(title, author)
 
-    searchMd = '暂无数据'
+    searchMd = 'No data'
     if searches:
         searchMd = '\n'.join([search(item) for item in searches])
 
-    starMd = '暂无数据'
+    starMd = 'No data'
     if stars:
         starMd = '\n'.join([star(item) for item in stars])
 
-    liveMd = '暂无数据'
+    liveMd = 'No data'
     if lives:
         liveMd = '\n'.join([live(item) for item in lives])
 
-    musicMd = '暂无数据'
+    musicMd = 'No data'
     if musics:
         musicMd = '\n'.join([music(item) for item in musics])
 
-    brandsMd = '暂无数据'
+    brandsMd = 'No data'
     if brands:
         brandsMd = generate_brand_table_md(brands)
 
@@ -84,7 +84,7 @@ def generate_archive_md(searches, stars, lives, musics, brands):
 
 
 def generate_readme(searches, stars, lives, musics, brands):
-    """生成今日readme
+    """Generate today readme
     """
     def search(item):
         word = item['word']
@@ -121,23 +121,23 @@ def generate_readme(searches, stars, lives, musics, brands):
             return '1. [{}]({}) - {}'.format(title, play_url, author)
         return '1. {} - {}'.format(title, author)
 
-    searchMd = '暂无数据'
+    searchMd = 'No data'
     if searches:
         searchMd = '\n'.join([search(item) for item in searches])
 
-    starMd = '暂无数据'
+    starMd = 'No data'
     if stars:
         starMd = '\n'.join([star(item) for item in stars])
 
-    liveMd = '暂无数据'
+    liveMd = 'No data'
     if lives:
         liveMd = '\n'.join([live(item) for item in lives])
 
-    musicMd = '暂无数据'
+    musicMd = 'No data'
     if musics:
         musicMd = '\n'.join([music(item) for item in musics])
 
-    brandsMd = '暂无数据'
+    brandsMd = 'No data'
     if brands:
         brandsMd = generate_brand_table_md(brands)
 
@@ -261,32 +261,33 @@ def get_all_brands(dy: Douyin):
 
 
 def run():
-    # 获取数据
+    # Init douyin
     dy = Douyin()
-    # 热搜
+    # Get hot search
     searches, resp = dy.get_hot_search()
     save_raw_response(resp, 'hot-search')
     time.sleep(1)
-    # 明星
+    # Get hot star
     stars, resp = dy.get_hot_star()
     save_raw_response(resp, 'hot-star')
     time.sleep(1)
-    # 直播
+    # Get hot live
     lives, resp = dy.get_hot_live()
     save_raw_response(resp, 'hot-live')
     time.sleep(1)
-    # 音乐
+    # Get hot music
     musics, resp = dy.get_hot_music()
     save_raw_response(resp, 'hot-music')
     time.sleep(1)
-    # 品牌
+    # Get all brands
     brands = get_all_brands(dy)
     time.sleep(1)
 
-    # 最新数据
+    # Generate today readme
     todayMd = generate_readme(searches, stars, lives, musics, brands)
     save_readme(todayMd)
-    # 归档
+
+    # Generate archive
     archiveMd = generate_archive_md(searches, stars, lives, musics, brands)
     save_archive_md(archiveMd)
 
