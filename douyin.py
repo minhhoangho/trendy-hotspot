@@ -43,7 +43,7 @@ def request_session():
 class Douyin:
 
     def get_hot_search(self):
-        """热点
+        """Hot search
             {
                 "word_cover": {
                     "uri": "tos-cn-p-0015/fd4bf2569c7b4991a5b21cb63c34789b",
@@ -82,14 +82,14 @@ class Douyin:
         return (items, resp)
 
     def get_hot_star(self):
-        """明星
+        """Star
         {
             "honor_tags": [
                 2
             ],
             "user_info": {
-                "nickname": "冯巩",
-                "signature": "请大家多关注我！\n合作联系：侯先生 13146277832",
+                "nicknameJ "Join doe",
+                "signature": "Contact at: 13146277832",
                 "avatar_thumb": {
                     "uri": "100x100/314ed000225fde1f50b62",
                     "url_list": [
@@ -136,14 +136,14 @@ class Douyin:
         return (items, resp)
 
     def get_hot_live(self):
-        """直播
+        """Live streaming
             {
                 "user": {
                     "id": 52504997437,
                     "short_id": 10128106,
-                    "nickname": "梦想山妹",
+                    "nickname": "Jane",
                     "gender": 2,
-                    "signature": "下午四点❤️开播粉丝马甲梦之队\n多变才艺主播情感分享正能量\n只有这一个号，其他都是冒充，请勿上当受骗❗️❗️❗️",
+                    "signature": "Sample signature",
                     "level": 1,
                     "birthday": 0,
                     "telephone": "",
@@ -438,10 +438,10 @@ class Douyin:
         return (items, resp)
 
     def get_brand_category(self):
-        """品牌分类
+        """Brand category
             {
                 "id": 1,
-                "name": "汽车"
+                "name": "Cloth"
             }
         """
         items = []
@@ -457,13 +457,13 @@ class Douyin:
         return (items, resp)
 
     def get_hot_brand(self, category: int):
-        """品牌榜
+        """Brand list
         {
             "interactive_tag_type": 0,
             "is_in_webcasting": false,
             "bluev_uid": "99808893411",
             "rank": 1,
-            "name": "宝马",
+            "name": "Cloth",
             "logo_url": {
                 "url_list": [
                     "https://p1.pstatp.com/large/web.business.image/202003165d0d22dc33f467844f859685"
@@ -496,7 +496,7 @@ class Douyin:
         """
             {
                 "music_info": {
-                    "album": "四季予你",
+                    "album": "Hot",
                     "cover_thumb": {
                     "width": 720,
                     "height": 720,
