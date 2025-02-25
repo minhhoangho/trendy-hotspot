@@ -2,8 +2,8 @@ name: schedule
 
 on:
   schedule:
-    # Execute every 6 hour
-    - cron: "0 */6 * * *"
+    # Execute every 3 hours
+    - cron: "0 */3 * * *"
 
 jobs:
   build:
